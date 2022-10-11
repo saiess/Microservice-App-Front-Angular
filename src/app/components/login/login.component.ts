@@ -26,6 +26,11 @@ export class LoginComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    if (this.authenticationService.currentUserValue !== null 
+      && this.authenticationService.currentUserValue !== undefined)
+
+      this.router.navigate(['/home']);
   }
 
   onSubmit() {

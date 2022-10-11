@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -10,7 +11,14 @@ export class HeaderComponent implements OnInit {
 
   loggedIn = false;
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService,
+    private router: Router) { 
+
+    this.authenticationService.cuurentUser$.subscribe(
+
+      userModel => this.loggedIn = userModel != null
+    )
+  }
 
   ngOnInit(): void {
   }
@@ -19,6 +27,7 @@ export class HeaderComponent implements OnInit {
     event.preventDefault();
 
     this.authenticationService.logout();
+    this.router.navigate(['/home']);
   }
 
 }
