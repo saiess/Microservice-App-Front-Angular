@@ -1,0 +1,12 @@
+<div class="home-container">
+    <div class="home-container-title">
+        Most recent 10 docs
+    </div>
+    <div class="docs-list-container">
+        <div *ngFor="let doc of recentDocs">
+            <app-doc-cell [doc]="doc">
+
+            </app-doc-cell>
+        </div>
+    </div>
+</div>

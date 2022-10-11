@@ -1,0 +1,42 @@
+<section class="vh-100" style="background-color: #27080b;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card shadow-2-strong" style="border-radius: 1rem;">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="card-body p-5 text-center">
+  
+              <h3 class="mb-5">Sign in</h3>
+  
+              <div class="form-group mb-4">
+                <input type="text" formControlName="username" class="form-control form-control-lg" [ngClass]="{'is-invalid': submitted && f['username'].errors}" />
+                <label class="form-label" for="username">Email</label>
+                <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
+                    <div *ngIf="f['username'].errors['required']">
+                        Username is required
+                    </div>
+                </div>
+              </div>
+  
+              <div class="form-group mb-4">
+                <input type="password" formControlName="password" class="form-control form-control-lg" [ngClass]="{'is-invalid': submitted && f['password'].errors}" />
+                <label class="form-label" for="password">Password</label>
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                    <div *ngIf="f['password'].errors['required']">
+                        Password is required
+                    </div>
+                </div>
+              </div>
+  
+              <div>
+
+                  <button [disabled]="loading" class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                  <img *ngIf="loading" class="pl-3" src="" alt="">
+                  <a routerLink="/register" class="btn btn-link">Register</a>
+              </div>
+  
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
